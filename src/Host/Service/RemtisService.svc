@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Remotis.Host.Service.Service1" CodeBehind="RemtisService.svc.cs" %>
