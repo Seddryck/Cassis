@@ -19,14 +19,14 @@ namespace Remotis.Client
         /// </summary>
         /// <param name="package">Information about the package to execute</param>
         /// <param name="log">Function called when a log message is received</param>
-        public void Execute(PackageRequest package, Action<Message> log)
+        public PackageResponse Execute(PackageRequest package, Action<Message> log)
         {
             var logger = new Logger(log);
             var context = new InstanceContext(logger);
-            using (var factory = new DuplexChannelFactory<IRemotisService>(context, serviceInfo.EndPoint))
+            using (var factory = new DuplexChannelFactory<IPackageService>(context, serviceInfo.Binding, serviceInfo.Address ))
             {
                 var channel = factory.CreateChannel();
-                channel.Run(package);
+                return channel.Run(package);
             }
         }
     }

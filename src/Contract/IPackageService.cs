@@ -6,10 +6,10 @@ using System.ServiceModel;
 namespace Remotis.Contract
 {
     [ServiceContract(CallbackContract = typeof (ILog))]
-	public interface IRemotisService
+	public interface IPackageService
 	{
 
         [OperationContract]
-        void Run(PackageRequest request);
+        PackageResponse Run(PackageRequest request);
 	}
 }

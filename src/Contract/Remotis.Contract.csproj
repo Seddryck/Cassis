@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PackageResponse.cs" />
     <Compile Include="ILog.cs" />
-    <Compile Include="IRemotisService.cs" />
+    <Compile Include="IPackageService.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="PackageRequest.cs" />
