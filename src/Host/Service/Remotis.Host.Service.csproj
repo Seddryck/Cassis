@@ -81,7 +81,6 @@
     <Compile Include="RemtisService.svc.cs">
       <DependentUpon>RemtisService.svc</DependentUpon>
     </Compile>
-    <Compile Include="RemotisService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
