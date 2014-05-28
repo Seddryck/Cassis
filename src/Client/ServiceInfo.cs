@@ -12,6 +12,11 @@ namespace Remotis.Client
         public Binding Binding { get; set; }
         public EndpointAddress Address { get; set; }
 
+        public ServiceInfo(string address, Binding binding)
+        {
+            Binding = binding;
+            Address = new EndpointAddress(address);
+        }
 
         public ServiceInfo(string address)
         {
