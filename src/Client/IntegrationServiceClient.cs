@@ -19,7 +19,7 @@ namespace Remotis.Client
         /// </summary>
         /// <param name="package">Information about the package to execute</param>
         /// <param name="log">Function called when a log message is received</param>
-        public PackageResponse Execute(PackageRequest package, Action<Message> log)
+        public PackageResponse Execute(FilePackage package, Action<Message> log)
         {
             var logger = new Logger(log);
             var context = new InstanceContext(logger);

@@ -8,8 +8,16 @@ namespace Remotis.Contract
     [ServiceContract(CallbackContract = typeof (ILog))]
 	public interface IPackageService
 	{
+        [OperationContract(Name="RunFilePackage")]
+        PackageResponse Run(FilePackage request, LogOption logOption);
 
-        [OperationContract]
-        PackageResponse Run(PackageRequest request);
+        [OperationContract(Name = "RunSqlPackage")]
+        PackageResponse Run(SqlPackage request);
+
+        [OperationContract(Name = "RunSqlPackageWithSqlAuthentification")]
+        PackageResponse Run(SqlPackage request, SqlAuthentification authentification);
+
+        [OperationContract(Name = "RunCatalogPackage")]
+        PackageResponse Run(CatalogPackage request);
 	}
 }

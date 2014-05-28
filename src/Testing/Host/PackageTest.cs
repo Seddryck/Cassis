@@ -84,7 +84,7 @@ namespace Remotis.Testing.Acceptance
         [Test]
         public void Run_PackageWithoutParameter_ExecutionSuccessful()
         {
-            var package = new PackageRequest();
+            var package = new FilePackage();
             package.Name = Path.GetFileName(PackageFullPath);
             package.Path = Path.GetDirectoryName(PackageFullPath) + Path.DirectorySeparatorChar;
             package.Password = "p@ssw0rd";
