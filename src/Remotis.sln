@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Contract", "Contract\Remotis.Contract.csproj", "{8E66E7BC-68ED-4493-BE3B-0322A02E65FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Client", "Client\Remotis.Client.csproj", "{68157928-6BBF-4C2C-906C-F36A6C477D07}"
@@ -13,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Testing.Acceptance"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Testing.Client", "Testing\Client\Remotis.Testing.Client.csproj", "{B0CBBF5B-59C9-47B3-B69B-D6C78D18AB8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Testing.Server", "Testing\Server\Remotis.Testing.Server.csproj", "{885D60EA-D324-46C4-849C-D86FB53EECD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Testing.Service", "Testing\Server\Remotis.Testing.Service.csproj", "{885D60EA-D324-46C4-849C-D86FB53EECD4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Host.Service", "Host\Service\Remotis.Host.Service.csproj", "{00B12E14-0542-4CE6-A385-4D2AC984E232}"
 EndProject
@@ -24,6 +26,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{648A7BDB-921A-4F5E-B5C4-E6A58855B038}"
 	ProjectSection(SolutionItems) = preProject
 		AssemblyInfo.cs = AssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{08CFD5DB-5CE3-4695-BA33-F506A9CBCD2F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
 Global
@@ -69,12 +76,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{8E66E7BC-68ED-4493-BE3B-0322A02E65FE} = {5DABD165-9061-43B1-ACA7-691906E9A768}
+		{68157928-6BBF-4C2C-906C-F36A6C477D07} = {F4E39FD8-3F16-4F0C-95AB-67A40768538C}
 		{526F34EE-E76B-4C61-8105-0371B331C253} = {5DABD165-9061-43B1-ACA7-691906E9A768}
 		{7F4573CC-8737-4489-A49D-B4050DBFA53D} = {5DABD165-9061-43B1-ACA7-691906E9A768}
+		{B0CBBF5B-59C9-47B3-B69B-D6C78D18AB8E} = {F4E39FD8-3F16-4F0C-95AB-67A40768538C}
 		{885D60EA-D324-46C4-849C-D86FB53EECD4} = {5DABD165-9061-43B1-ACA7-691906E9A768}
 		{00B12E14-0542-4CE6-A385-4D2AC984E232} = {5DABD165-9061-43B1-ACA7-691906E9A768}
-		{8E66E7BC-68ED-4493-BE3B-0322A02E65FE} = {5DABD165-9061-43B1-ACA7-691906E9A768}
-		{B0CBBF5B-59C9-47B3-B69B-D6C78D18AB8E} = {F4E39FD8-3F16-4F0C-95AB-67A40768538C}
-		{68157928-6BBF-4C2C-906C-F36A6C477D07} = {F4E39FD8-3F16-4F0C-95AB-67A40768538C}
 	EndGlobalSection
 EndGlobal

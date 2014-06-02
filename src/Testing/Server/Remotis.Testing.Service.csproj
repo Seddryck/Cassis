@@ -7,8 +7,8 @@
     <ProjectGuid>{885D60EA-D324-46C4-849C-D86FB53EECD4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Remotis.Testing.Server</RootNamespace>
-    <AssemblyName>Remotis.Testing.Server</AssemblyName>
+    <RootNamespace>Remotis.Testing.Service</RootNamespace>
+    <AssemblyName>Remotis.Testing.Service</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -44,12 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileOnDisk.cs" />
+    <Compile Include="Integration\PackageServiceTest.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
     <Compile Include="..\..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Contract\Remotis.Contract.csproj">
+      <Project>{8e66e7bc-68ed-4493-be3b-0322a02e65fe}</Project>
+      <Name>Remotis.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Server\Remotis.Service.csproj">
       <Project>{526f34ee-e76b-4c61-8105-0371b331c253}</Project>
       <Name>Remotis.Service</Name>
@@ -57,7 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\Sample.dtsx" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	   Other similar extension points exist, see Microsoft.Common.targets.

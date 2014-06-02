@@ -13,15 +13,18 @@ namespace Remotis.Service
         
         public PackageResponse Run(FilePackage packageInfo, LogOption logOption)
         {
-            var LogGate
             var integrationServices = new Application();
             if (!string.IsNullOrEmpty(packageInfo.Password))
                 integrationServices.PackagePassword = packageInfo.Password;
 
-            var package = integrationServices.LoadPackage(packageInfo.Path + packageInfo.Name, null);
+            var packagePath = packageInfo.Path 
+                + packageInfo.Name 
+                + (packageInfo.Name.EndsWith(".dtsx") ? "" : ".dtsx");
+            var package = integrationServices.LoadPackage(packagePath, null);
 
-            var packageResult = package.Execute(null, null, null, null, null);
-            return new PackageResponse(packageResult == DTSExecResult.Success);
+            var events = new PackageEvents();
+            var packageResult = package.Execute(null, null, events, null, null);
+            return new PackageResponse(packageResult == DTSExecResult.Success, events);
         }
 
         public PackageResponse Run(SqlPackage packageInfo)

@@ -11,12 +11,20 @@ namespace Remotis.Contract
         [XmlAttribute("success")]
         public bool Success {get; set;}
 
+        public List<string> Errors { get; set; }
+
         public PackageResponse()
         { }
 
         public PackageResponse(bool isSuccess)
         {
             Success = isSuccess;
+        }
+
+        public PackageResponse(bool isSuccess, IPackageEvents events)
+        {
+            Success = isSuccess;
+            Errors = events.Errors.ToList();
         }
     }
 
