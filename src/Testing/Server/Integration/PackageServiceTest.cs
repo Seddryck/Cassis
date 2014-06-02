@@ -9,6 +9,7 @@ using System.Text;
 
 namespace Remotis.Testing.Service
 {
+    [Category ("Integration")]
     public class PackageServiceTest
     {
         public string PackageFullPath { get; set; }
