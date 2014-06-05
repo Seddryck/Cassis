@@ -10,7 +10,7 @@ using System.Text;
 namespace Remotis.Testing.Service
 {
     [Category ("Integration")]
-    public class PackageServiceTest
+    public class FilePackageServiceTest
     {
         public string PackageFullPath { get; set; }
 
@@ -65,6 +65,8 @@ namespace Remotis.Testing.Service
             Assert.That(result.Errors, Has.Count.EqualTo(0));
             Assert.That(File.Exists("Toto2.txt"));
         }
+
+
 
 
     }
