@@ -35,8 +35,9 @@ namespace Remotis.Service
 
             var package = integrationServices.LoadFromDtsServer(packageInfo.Path + packageInfo.Name, packageInfo.Server, null);
 
-            var packageResult = package.Execute(null, null, null, null, null);
-            return new PackageResponse(packageResult == DTSExecResult.Success);
+            var events = new PackageEvents();
+            var packageResult = package.Execute(null, null, events, null, null);
+            return new PackageResponse(packageResult == DTSExecResult.Success, events);
         }
 
         public PackageResponse Run(SqlPackage packageInfo, SqlAuthentification authentification)
