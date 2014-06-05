@@ -63,7 +63,7 @@ namespace Remotis.Testing.Service
         #endregion
 
         [Test]
-        public void Run_FilePackage_Sucessful()
+        public void Run_SqlPackage_Sucessful()
         {
             var packageInfo = new SqlPackage()
             {
@@ -73,7 +73,7 @@ namespace Remotis.Testing.Service
             };
             
             var packageService = new PackageService();
-            var result = packageService.Run(packageInfo);
+            var result = packageService.Run(packageInfo, null);
 
             Assert.That(result.Success, Is.True);
             Assert.That(result.Errors, Has.Count.EqualTo(0));

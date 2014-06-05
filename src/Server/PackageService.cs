@@ -5,13 +5,14 @@ using System.Linq;
 using Microsoft.SqlServer.Dts.Runtime;
 using Ssis = Microsoft.SqlServer.Management.IntegrationServices;
 using Remotis.Contract;
+using System.Collections.Generic;
 
 namespace Remotis.Service
 {
     public class PackageService : IPackageService
     {
-        
-        public PackageResponse Run(FilePackage packageInfo, LogOption logOption)
+
+        public PackageResponse Run(FilePackage packageInfo, LogOption logOption, IEnumerable<Remotis.Contract.PackageParameter> parameters)
         {
             var integrationServices = new Application();
             if (!string.IsNullOrEmpty(packageInfo.Password))
@@ -22,12 +23,14 @@ namespace Remotis.Service
                 + (packageInfo.Name.EndsWith(".dtsx") ? "" : ".dtsx");
             var package = integrationServices.LoadPackage(packagePath, null);
 
+            Parameterize(parameters, ref package);
+
             var events = new PackageEvents();
             var packageResult = package.Execute(null, null, events, null, null);
             return new PackageResponse(packageResult == DTSExecResult.Success, events);
         }
 
-        public PackageResponse Run(SqlPackage packageInfo)
+        public PackageResponse Run(SqlPackage packageInfo, LogOption logOption)
         {
             var integrationServices = new Application();
             if (!string.IsNullOrEmpty(packageInfo.Password))
@@ -40,7 +43,7 @@ namespace Remotis.Service
             return new PackageResponse(packageResult == DTSExecResult.Success, events);
         }
 
-        public PackageResponse Run(SqlPackage packageInfo, SqlAuthentification authentification)
+        public PackageResponse Run(SqlPackage packageInfo, SqlAuthentification authentification, LogOption logOption)
         {
             var integrationServices = new Application();
             if (!string.IsNullOrEmpty(packageInfo.Password))
@@ -52,11 +55,12 @@ namespace Remotis.Service
                 , authentification.Password
                 , null);
 
-            var packageResult = package.Execute(null, null, null, null, null);
+            var events = new PackageEvents();
+            var packageResult = package.Execute(null, null, events, null, null);
             return new PackageResponse(packageResult == DTSExecResult.Success);
         }
 
-        public PackageResponse Run(CatalogPackage packageInfo)
+        public PackageResponse Run(CatalogPackage packageInfo, LogOption logOption)
         {
             var connection = new SqlConnection(string.Format(@"Data Source={0};Initial Catalog=master;Integrated Security=SSPI;", packageInfo.Server));
             var integrationServices = new Ssis.IntegrationServices(connection);
@@ -79,6 +83,14 @@ namespace Remotis.Service
             var execution = catalog.Executions[executionIdentifier];
 
             return new PackageResponse(execution.Status == Ssis.Operation.ServerOperationStatus.Success);
+        }
+
+        protected virtual void Parameterize(IEnumerable<Remotis.Contract.PackageParameter> parameters, ref Package package)
+        {
+            foreach (var param in parameters)
+            {
+                package.Parameters[param.Name].Value = param.Value;
+            }
         }
     }
 }

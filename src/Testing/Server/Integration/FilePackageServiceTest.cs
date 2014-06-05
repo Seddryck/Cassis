@@ -59,11 +59,36 @@ namespace Remotis.Testing.Service
             };
             
             var packageService = new PackageService();
-            var result = packageService.Run(packageInfo, null);
+            var result = packageService.Run(packageInfo, null, null);
 
             Assert.That(result.Success, Is.True);
             Assert.That(result.Errors, Has.Count.EqualTo(0));
             Assert.That(File.Exists("Toto2.txt"));
+        }
+
+        public void Run_Parameters_Sucessful()
+        {
+            var packageInfo = new FilePackage()
+            {
+                Password = "p@ssw0rd",
+                Path = @"Etl\",
+                Name = "Sample"
+            };
+
+            var param = new PackageParameter()
+            {
+                Name = "DestinationPath",
+                Value = "Toto3.txt",
+            };
+            var parameters = new List<PackageParameter>() { param };
+
+            var packageService = new PackageService();
+            var result = packageService.Run(packageInfo, null, parameters);
+
+            Assert.That(result.Success, Is.True);
+            Assert.That(result.Errors, Has.Count.EqualTo(0));
+            Assert.That(!File.Exists("Toto2.txt"));
+            Assert.That(File.Exists("Toto3.txt"));
         }
 
 
