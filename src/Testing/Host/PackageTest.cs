@@ -10,6 +10,7 @@ using Remotis.Contract;
 
 namespace Remotis.Testing.Acceptance
 {
+    [Category ("Acceptance")]
     public class PackageTest
     {
         private const string ServiceHostExeFile = "Remotis.Host.Console.exe";
