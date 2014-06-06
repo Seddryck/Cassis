@@ -60,7 +60,7 @@ namespace Remotis.Service
             return new PackageResponse(packageResult == DTSExecResult.Success);
         }
 
-        public PackageResponse Run(CatalogPackage packageInfo, LogOption logOption)
+        public PackageResponse Run(CatalogPackage packageInfo, LogOption logOption, IEnumerable<Remotis.Contract.PackageParameter> parameters)
         {
             var connection = new SqlConnection(string.Format(@"Data Source={0};Initial Catalog=master;Integrated Security=SSPI;", packageInfo.Server));
             var integrationServices = new Ssis.IntegrationServices(connection);
@@ -68,7 +68,12 @@ namespace Remotis.Service
             var catalog = integrationServices.Catalogs[packageInfo.Catalog];
             var folder = catalog.Folders[packageInfo.Folder];
             var project = folder.Projects[packageInfo.Project];
-            var package = project.Packages[packageInfo.Name];
+            var package = project.Packages[packageInfo.Name + (packageInfo.Name.EndsWith(".dtsx") ? "" : ".dtsx")];
+
+            foreach (var parameter in parameters)
+                package.Parameters[parameter.Name].Set(Ssis.ParameterInfo.ParameterValueType.Literal, parameter.Value);
+
+            package.Alter();
 
             var setValueParameters = new Collection<Ssis.PackageInfo.ExecutionValueParameterSet>();
             setValueParameters.Add(new Ssis.PackageInfo.ExecutionValueParameterSet
@@ -81,8 +86,9 @@ namespace Remotis.Service
             long executionIdentifier = package.Execute(packageInfo.Is32Bits, null, setValueParameters);
 
             var execution = catalog.Executions[executionIdentifier];
+            var errors = execution.Messages.Where(m => m.MessageType == (short)MessageType.Error).Select(m=>m.Message);
 
-            return new PackageResponse(execution.Status == Ssis.Operation.ServerOperationStatus.Success);
+            return new PackageResponse(execution.Status == Ssis.Operation.ServerOperationStatus.Success, errors);
         }
 
         protected virtual void Parameterize(IEnumerable<Remotis.Contract.PackageParameter> parameters, ref Package package)

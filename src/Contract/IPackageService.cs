@@ -19,6 +19,6 @@ namespace Remotis.Contract
         PackageResponse Run(SqlPackage request, SqlAuthentification authentification, LogOption logOption);
 
         [OperationContract(Name = "RunCatalogPackage")]
-        PackageResponse Run(CatalogPackage request, LogOption logOption);
+        PackageResponse Run(CatalogPackage request, LogOption logOption, IEnumerable<Remotis.Contract.PackageParameter> parameters);
 	}
 }

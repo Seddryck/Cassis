@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ConfigurationReader.cs" />
     <Compile Include="FileOnDisk.cs" />
+    <Compile Include="Integration\CatalogPackageServiceTest.cs" />
     <Compile Include="Integration\SqlPackageServiceTest.cs" />
     <Compile Include="Integration\FilePackageServiceTest.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />

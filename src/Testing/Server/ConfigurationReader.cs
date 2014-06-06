@@ -38,5 +38,14 @@ namespace Remotis.Testing.Service
             return Get("ServerName");
         }
 
+
+        internal static string GetSqlServerName()
+        {
+            return Get("SqlServerName");
+        }
+        internal static string GetDestinationPath()
+        {
+            return Get("DestinationPath");
+        }
     }
 }
