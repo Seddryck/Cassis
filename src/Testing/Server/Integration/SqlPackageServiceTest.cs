@@ -69,7 +69,8 @@ namespace Remotis.Testing.Service
             {
                 Password="p@ssw0rd",
                 Path = IntegrationFolder,
-                Name="Sample"
+                Name="Sample",
+                Server="."
             };
             
             var packageService = new PackageService();

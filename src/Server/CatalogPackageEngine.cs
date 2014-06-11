@@ -17,7 +17,7 @@ namespace Remotis.Service
         public CatalogPackageEngine(CatalogPackage packageInfo, IEnumerable<PackageParameter> parameters)
         {
             PackageInfo = packageInfo;
-            Parameters = parameters;
+            Parameters = parameters ?? new List<PackageParameter>();
         }
 
         protected virtual IntegrationServices GetIntegrationServices(string serverName)

@@ -18,6 +18,12 @@ namespace Remotis.Service
         public SqlHostedPackageEngine(SqlHostedPackage packageInfo, IEnumerable<PackageParameter> parameters)
             : base(packageInfo, parameters) {}
 
+        protected override string GetPackagePath(FilePackage packageInfo)
+        {
+            return packageInfo.Path
+                    + packageInfo.Name;
+        }
+
         protected override Package LoadPackage(string packagePath)
         {
             return IntegrationService.LoadFromDtsServer(packagePath, PackageInfo.Server, null);

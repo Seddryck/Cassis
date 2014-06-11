@@ -12,23 +12,15 @@ namespace Remotis.Service
         public LogOption LogOption { get; set; }
         protected FilePackage PackageInfo { get; set; }
         protected IEnumerable<PackageParameter> Parameters { get; set; }
+        protected Application IntegrationService { get; set; }
 
         public PackageCentricEngine(FilePackage packageInfo, IEnumerable<PackageParameter> parameters)
         {
             PackageInfo = packageInfo;
-            Parameters = parameters;
-        }
-
-        protected Application IntegrationService { get; set; }
-
-        public PackageCentricEngine()
-        {
+            Parameters = parameters ?? new List<PackageParameter>();
             IntegrationService = new Application();
         }
-        internal PackageCentricEngine(Application integrationService)
-        {
-            IntegrationService = integrationService;
-        }
+
 
         public PackageResponse Run()
         {
