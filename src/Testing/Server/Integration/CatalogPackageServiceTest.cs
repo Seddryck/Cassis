@@ -52,7 +52,6 @@ namespace Remotis.Testing.Service
 
             Assert.That(result.Success, Is.True);
             Assert.That(result.Errors, Has.Count.EqualTo(0));
-            Assert.That(File.Exists(ConfigurationReader.GetDestinationPath()));
         }
 
         [Test]
@@ -68,7 +67,7 @@ namespace Remotis.Testing.Service
                 , Name="Sample"
             };
 
-            var path = Path.GetDirectoryName(ConfigurationReader.GetDestinationPath()) + @"\Toto3.txt";
+            var path = Path.GetDirectoryName(ConfigurationReader.GetDestinationPath()) + @"\Toto4.txt";
          
             var param = new PackageParameter()
             {
