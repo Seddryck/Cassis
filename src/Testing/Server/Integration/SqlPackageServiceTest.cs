@@ -65,7 +65,7 @@ namespace Remotis.Testing.Service
         [Test]
         public void Run_SqlPackage_Sucessful()
         {
-            var packageInfo = new SqlPackage()
+            var packageInfo = new SqlHostedPackage()
             {
                 Password="p@ssw0rd",
                 Path = IntegrationFolder,
@@ -73,7 +73,7 @@ namespace Remotis.Testing.Service
             };
             
             var packageService = new PackageService();
-            var result = packageService.Run(packageInfo, null);
+            var result = packageService.Run(packageInfo, null, null);
 
             Assert.That(result.Success, Is.True);
             Assert.That(result.Errors, Has.Count.EqualTo(0));

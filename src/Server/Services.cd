@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Remotis.Service.FilePackageEngine">
+    <Position X="3.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>FilePackageEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Remotis.Service.PackageCentricEngine">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAQBAEAAAAAAAAICAgAAACAI=</HashCode>
+      <FileName>PackageCentricEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Remotis.Service.PackageService">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAI=</HashCode>
+      <FileName>PackageService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Remotis.Service.SqlHostedPackageEngine">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>SqlHostedPackageEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Remotis.Service.PackageEvents" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgCAAQAAAAAAAAAAIIAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>PackageEvents.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="Remotis.Service.MessageType" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAgACAQAQIAgAACIBCBIAAAACAAAAAAAECAABA=</HashCode>
+      <FileName>MessageType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

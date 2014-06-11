@@ -10,15 +10,28 @@ namespace Remotis.Contract
 	public interface IPackageService
 	{
         [OperationContract(Name="RunFilePackage")]
-        PackageResponse Run(FilePackage request, LogOption logOption, IEnumerable<PackageParameter> parameters);
+        PackageResponse Run(
+            FilePackage request
+            , LogOption logOption,
+            IEnumerable<PackageParameter> parameters);
 
         [OperationContract(Name = "RunSqlPackage")]
-        PackageResponse Run(SqlPackage request, LogOption logOption);
+        PackageResponse Run(
+            SqlHostedPackage request
+            , LogOption logOption
+            , IEnumerable<Remotis.Contract.PackageParameter> parameters);
 
         [OperationContract(Name = "RunSqlPackageWithSqlAuthentification")]
-        PackageResponse Run(SqlPackage request, SqlAuthentification authentification, LogOption logOption);
+        PackageResponse Run(
+            SqlHostedPackage request
+            , SqlAuthentification authentification
+            , LogOption logOption
+            , IEnumerable<Remotis.Contract.PackageParameter> parameters);
 
         [OperationContract(Name = "RunCatalogPackage")]
-        PackageResponse Run(CatalogPackage request, LogOption logOption, IEnumerable<Remotis.Contract.PackageParameter> parameters);
+        PackageResponse Run(
+            CatalogPackage request
+            , LogOption logOption
+            , IEnumerable<Remotis.Contract.PackageParameter> parameters);
 	}
 }

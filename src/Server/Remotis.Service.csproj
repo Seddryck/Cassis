@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatalogPackageEngine.cs" />
+    <Compile Include="IPackageEngine.cs" />
+    <Compile Include="SqlHostedWithAuthPackageEngine.cs" />
+    <Compile Include="SqlHostedPackageEngine.cs" />
+    <Compile Include="FilePackageEngine.cs" />
+    <Compile Include="PackageCentricEngine.cs" />
     <Compile Include="MessageType.cs" />
     <Compile Include="PackageEvents.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
@@ -61,6 +67,9 @@
       <Project>{8e66e7bc-68ed-4493-be3b-0322a02e65fe}</Project>
       <Name>Remotis.Contract</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Services.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
