@@ -3,7 +3,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
-namespace Remotis.Contract
+namespace Cassis.Contract
 {
     [ServiceContract(CallbackContract = typeof (ILog))]
 	public interface IPackageService

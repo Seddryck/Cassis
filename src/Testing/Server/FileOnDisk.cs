@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace Remotis.Testing.Service
+namespace Cassis.Testing.Service
 {
     class FileOnDisk
     {

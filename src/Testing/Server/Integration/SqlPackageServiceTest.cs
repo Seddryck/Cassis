@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using Remotis.Contract;
-using Remotis.Service;
+using Cassis.Contract;
+using Cassis.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.SqlServer.Dts.Runtime;
 
-namespace Remotis.Testing.Service
+namespace Cassis.Testing.Service
 {
     [Category ("Integration")]
     public class SqlPackageServiceTest
@@ -39,12 +39,12 @@ namespace Remotis.Testing.Service
             integrationServer.PackagePassword = "p@ssw0rd";
             var package = integrationServer.LoadPackage(packageFullPath, null);
 
-            if (!integrationServer.FolderExistsOnDtsServer(@"File System\RemotisTesting", ConfigurationReader.GetServerName()))
-                integrationServer.CreateFolderOnDtsServer(@"File System", "RemotisTesting", ConfigurationReader.GetServerName());
+            if (!integrationServer.FolderExistsOnDtsServer(@"File System\CassisTesting", ConfigurationReader.GetServerName()))
+                integrationServer.CreateFolderOnDtsServer(@"File System", "CassisTesting", ConfigurationReader.GetServerName());
             
             // Save the package under myFolder which is found under the 
             // File System folder on the Integration Services service.
-            integrationServer.SaveToDtsServer(package, null, @"File System\RemotisTesting\Sample", ConfigurationReader.GetServerName());
+            integrationServer.SaveToDtsServer(package, null, @"File System\CassisTesting\Sample", ConfigurationReader.GetServerName());
         }
 
         [TearDown]
@@ -57,8 +57,8 @@ namespace Remotis.Testing.Service
         private void CleanPackage()
         {
             var integrationServer = new Application();
-            if (integrationServer.ExistsOnDtsServer(@"File System\RemotisTesting\Sample", ConfigurationReader.GetServerName()))
-                integrationServer.RemoveFromDtsServer(@"File System\RemotisTesting\Sample", ConfigurationReader.GetServerName());
+            if (integrationServer.ExistsOnDtsServer(@"File System\CassisTesting\Sample", ConfigurationReader.GetServerName()))
+                integrationServer.RemoveFromDtsServer(@"File System\CassisTesting\Sample", ConfigurationReader.GetServerName());
         } 
         #endregion
 
@@ -68,7 +68,7 @@ namespace Remotis.Testing.Service
             var packageInfo = new SqlPackage()
             {
                 Password="p@ssw0rd",
-                Path = @"File System\RemotisTesting\",
+                Path = @"File System\CassisTesting\",
                 Name="Sample"
             };
             

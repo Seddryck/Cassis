@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using Microsoft.SqlServer.Dts.Runtime;
 using Ssis = Microsoft.SqlServer.Management.IntegrationServices;
-using Remotis.Contract;
+using Cassis.Contract;
 
-namespace Remotis.Service
+namespace Cassis.Service
 {
     public class PackageService : IPackageService
     {

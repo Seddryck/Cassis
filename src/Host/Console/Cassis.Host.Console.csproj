@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EAA2E41A-BC9D-4482-804F-4ADF847C9ED3}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{7F4573CC-8737-4489-A49D-B4050DBFA53D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Remotis.Testing.Acceptance</RootNamespace>
-    <AssemblyName>Remotis.Testing.Acceptance</AssemblyName>
+    <RootNamespace>Cassis.Host.Console</RootNamespace>
+    <AssemblyName>Cassis.Host.Console</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,15 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,41 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileOnDisk.cs" />
-    <Compile Include="PackageTest.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
     <Compile Include="..\..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Client\Remotis.Client.csproj">
-      <Project>{68157928-6bbf-4c2c-906c-f36a6c477d07}</Project>
-      <Name>Remotis.Client</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Contract\Remotis.Contract.csproj">
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contract\Cassis.Contract.csproj">
       <Project>{8e66e7bc-68ed-4493-be3b-0322a02e65fe}</Project>
       <Name>Remotis.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Host\Console\Remotis.Host.Console.csproj">
-      <Project>{7f4573cc-8737-4489-a49d-b4050dbfa53d}</Project>
-      <Name>Remotis.Host.Console</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Host\Service\Remotis.Host.Service.csproj">
-      <Project>{00b12e14-0542-4ce6-a385-4d2ac984e232}</Project>
-      <Name>Remotis.Host.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Server\Remotis.Service.csproj">
+    <ProjectReference Include="..\..\Server\Cassis.Service.csproj">
       <Project>{526f34ee-e76b-4c61-8105-0371b331c253}</Project>
       <Name>Remotis.Service</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Remotis.Host.Console.exe.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="packages.config" />
-    <EmbeddedResource Include="Resources\Sample.dtsx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

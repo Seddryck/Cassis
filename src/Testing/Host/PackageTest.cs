@@ -5,15 +5,15 @@ using System.IO;
 using System.Linq;
 using System.ServiceModel.Configuration;
 using NUnit.Framework;
-using Remotis.Client;
-using Remotis.Contract;
+using Cassis.Client;
+using Cassis.Contract;
 
-namespace Remotis.Testing.Acceptance
+namespace Cassis.Testing.Acceptance
 {
     [Category ("Acceptance")]
     public class PackageTest
     {
-        private const string ServiceHostExeFile = "Remotis.Host.Console.exe";
+        private const string ServiceHostExeFile = "Cassis.Host.Console.exe";
         public ServiceInfo ServiceInfo { get; private set; }
         public Process ConsoleHost { get; private set; }
         public string PackageFullPath { get; set; }

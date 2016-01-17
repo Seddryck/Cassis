@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.ServiceModel;
-using Remotis.Contract;
+using Cassis.Contract;
 
-namespace Remotis.Client
+namespace Cassis.Client
 {
     public class IntegrationServiceClient
     {

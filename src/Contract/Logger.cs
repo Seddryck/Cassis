@@ -2,7 +2,7 @@
 using System.Linq;
 using System.ServiceModel;
 
-namespace Remotis.Contract
+namespace Cassis.Contract
 {
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant, UseSynchronizationContext = false)]
     public class Logger : ILog

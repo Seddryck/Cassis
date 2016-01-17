@@ -1,13 +1,13 @@
 ﻿using NUnit.Framework;
-using Remotis.Contract;
-using Remotis.Service;
+using Cassis.Contract;
+using Cassis.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Remotis.Testing.Service
+namespace Cassis.Testing.Service
 {
     [Category ("Integration")]
     public class FilePackageServiceTest

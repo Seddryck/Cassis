@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Contract", "Contract\Remotis.Contract.csproj", "{8E66E7BC-68ED-4493-BE3B-0322A02E65FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassis.Contract", "Contract\Cassis.Contract.csproj", "{8E66E7BC-68ED-4493-BE3B-0322A02E65FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Client", "Client\Remotis.Client.csproj", "{68157928-6BBF-4C2C-906C-F36A6C477D07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassis.Client", "Client\Cassis.Client.csproj", "{68157928-6BBF-4C2C-906C-F36A6C477D07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Service", "Server\Remotis.Service.csproj", "{526F34EE-E76B-4C61-8105-0371B331C253}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassis.Service", "Server\Cassis.Service.csproj", "{526F34EE-E76B-4C61-8105-0371B331C253}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Host.Console", "Host\Console\Remotis.Host.Console.csproj", "{7F4573CC-8737-4489-A49D-B4050DBFA53D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassis.Host.Console", "Host\Console\Cassis.Host.Console.csproj", "{7F4573CC-8737-4489-A49D-B4050DBFA53D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Testing.Acceptance", "Testing\Host\Remotis.Testing.Acceptance.csproj", "{EAA2E41A-BC9D-4482-804F-4ADF847C9ED3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassis.Testing.Acceptance", "Testing\Host\Cassis.Testing.Acceptance.csproj", "{EAA2E41A-BC9D-4482-804F-4ADF847C9ED3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Testing.Client", "Testing\Client\Remotis.Testing.Client.csproj", "{B0CBBF5B-59C9-47B3-B69B-D6C78D18AB8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassis.Testing.Client", "Testing\Client\Cassis.Testing.Client.csproj", "{B0CBBF5B-59C9-47B3-B69B-D6C78D18AB8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Testing.Service", "Testing\Server\Remotis.Testing.Service.csproj", "{885D60EA-D324-46C4-849C-D86FB53EECD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassis.Testing.Service", "Testing\Server\Cassis.Testing.Service.csproj", "{885D60EA-D324-46C4-849C-D86FB53EECD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remotis.Host.Service", "Host\Service\Remotis.Host.Service.csproj", "{00B12E14-0542-4CE6-A385-4D2AC984E232}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassis.Host.Service", "Host\Service\Cassis.Host.Service.csproj", "{00B12E14-0542-4CE6-A385-4D2AC984E232}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{F4E39FD8-3F16-4F0C-95AB-67A40768538C}"
 EndProject

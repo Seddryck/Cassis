@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Cédric L. Charlier")]
-[assembly: AssemblyProduct("Remotis")]
+[assembly: AssemblyProduct("Cassis")]
 [assembly: AssemblyCopyright("Copyright © Cédric L. Charlier 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

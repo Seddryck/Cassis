@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Xml.Serialization;
 
-namespace Remotis.Contract
+namespace Cassis.Contract
 {
     [XmlRootAttribute("log-option")]
     public class LogOption

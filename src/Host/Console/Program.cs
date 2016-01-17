@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.ServiceModel;
-using Remotis.Service;
+using Cassis.Service;
 
-namespace Remotis.Host.Console
+namespace Cassis.Host.Console
 {
     class Program
     {
