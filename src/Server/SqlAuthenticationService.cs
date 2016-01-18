@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Cassis.Service
 {
-    class SqlAuthenticationService : AbstractPackageService
+    class SqlAuthenticationService : SqlHostedService
     {
         public new SqlAuthenticationPackage PackageInfo
         {

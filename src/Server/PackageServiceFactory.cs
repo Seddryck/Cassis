@@ -10,8 +10,10 @@ namespace Cassis.Service
     {
         public virtual IPackageService Get(IPackageInfo packageInfo)
         {
+            #if !SqlServer2008R2
             if (packageInfo is CatalogPackage)
                 return new CatalogService(packageInfo as CatalogPackage);
+            #endif
             if (packageInfo is SqlAuthenticationPackage)
                 return new SqlAuthenticationService(packageInfo as SqlAuthenticationPackage);
             if (packageInfo is SqlHostedPackage)
@@ -19,6 +21,14 @@ namespace Cassis.Service
             if (packageInfo is FilePackage)
                 return new FileService(packageInfo as FilePackage);
             throw new ArgumentException();
+        }
+
+        public virtual IPackageService Get(IPackageInfo packageInfo, IEnumerable<PackageParameter> parameters)
+        {
+            var service = Get(packageInfo) as AbstractPackageService;
+            service.Parameters = parameters;
+
+            return service;
         }
     }
 }

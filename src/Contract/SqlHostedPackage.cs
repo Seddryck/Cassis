@@ -9,5 +9,7 @@ namespace Cassis.Contract
     {
         [XmlAttribute("server")]
         public string Server { get; set; }
+        [XmlElement("parameters")]
+        public PackageParameter[] Parameters { get; set; }
     }
 }

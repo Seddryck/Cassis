@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if ! SqlServer2008R2
+using System;
 using System.Linq;
 using System.Xml.Serialization;
 
@@ -13,6 +14,8 @@ namespace Cassis.Contract
         public string Password { get; set; }
         [XmlAttribute("catalog")]
         public string Catalog { get; set; }
+        [XmlAttribute("environment")]
+        public string Environment { get; set; }
         [XmlAttribute("folder")]
         public string Folder { get; set; }
         [XmlAttribute("project")]
@@ -21,5 +24,10 @@ namespace Cassis.Contract
         public string Server { get; set; }
         [XmlAttribute("bits-32")]
         public bool Is32Bits { get; set; }
+        [XmlAttribute("timeout")]
+        public int Timeout { get; set; }
+        [XmlElement("parameters")]
+        public PackageParameter[] Parameters { get; set; }
     }
 }
+#endif
