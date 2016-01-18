@@ -7,8 +7,8 @@
     <ProjectGuid>{885D60EA-D324-46C4-849C-D86FB53EECD4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Remotis.Testing.Service</RootNamespace>
-    <AssemblyName>Remotis.Testing.Service</AssemblyName>
+    <RootNamespace>Cassis.Testing.Service</RootNamespace>
+    <AssemblyName>Cassis.Testing.Service</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -53,20 +53,20 @@
   <ItemGroup>
     <Compile Include="ConfigurationReader.cs" />
     <Compile Include="FileOnDisk.cs" />
-    <Compile Include="Integration\CatalogPackageServiceTest.cs" />
-    <Compile Include="Integration\SqlPackageServiceTest.cs" />
-    <Compile Include="Integration\FilePackageServiceTest.cs" />
+    <Compile Include="Integration\SqlServiceTest.cs" />
+    <Compile Include="Integration\FileServiceTest.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
     <Compile Include="..\..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Unit\PackageServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Contract\Remotis.Contract.csproj">
+    <ProjectReference Include="..\..\Contract\Cassis.Contract.csproj">
       <Project>{8e66e7bc-68ed-4493-be3b-0322a02e65fe}</Project>
       <Name>Remotis.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Server\Remotis.Service.csproj">
+    <ProjectReference Include="..\..\Server\Cassis.Service.csproj">
       <Project>{526f34ee-e76b-4c61-8105-0371b331c253}</Project>
       <Name>Remotis.Service</Name>
     </ProjectReference>

@@ -2,10 +2,10 @@
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using Remotis.Contract;
+using Cassis.Contract;
 using System.ServiceModel.Channels;
 
-namespace Remotis.Client
+namespace Cassis.Client
 {
     public class ServiceInfo
     {

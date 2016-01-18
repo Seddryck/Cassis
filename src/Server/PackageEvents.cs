@@ -1,11 +1,11 @@
 ﻿using Microsoft.SqlServer.Dts.Runtime;
-using Remotis.Contract;
+using Cassis.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Remotis.Service
+namespace Cassis.Service
 {
     class PackageEvents : DefaultEvents, IPackageEvents
     {

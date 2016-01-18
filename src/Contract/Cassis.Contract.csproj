@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{68157928-6BBF-4C2C-906C-F36A6C477D07}</ProjectGuid>
+    <ProjectGuid>{8E66E7BC-68ED-4493-BE3B-0322A02E65FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Remotis.Client</RootNamespace>
-    <AssemblyName>Remotis.Client</AssemblyName>
+    <RootNamespace>Cassis.Contract</RootNamespace>
+    <AssemblyName>Cassis.Contract</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,8 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.SqlServer.Management.IntegrationServices, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.SqlServer.Management.IntegrationServices\11.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.Management.IntegrationServices.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,18 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntegrationServiceClient.cs" />
+    <Compile Include="CatalogPackage.cs" />
+    <Compile Include="IPackageEvents.cs" />
+    <Compile Include="IPackageInfo.cs" />
+    <Compile Include="LogOption.cs" />
+    <Compile Include="PackageResponse.cs" />
+    <Compile Include="ILog.cs" />
+    <Compile Include="IPackageService.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="FilePackage.cs" />
+    <Compile Include="PackageParameter.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
     <Compile Include="..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="ServiceInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Contract\Remotis.Contract.csproj">
-      <Project>{8e66e7bc-68ed-4493-be3b-0322a02e65fe}</Project>
-      <Name>Remotis.Contract</Name>
-    </ProjectReference>
+    <Compile Include="SqlAuthenticationPackage.cs" />
+    <Compile Include="SqlHostedPackage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

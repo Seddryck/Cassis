@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq;
-using Ssis = Microsoft.SqlServer.Management.IntegrationServices;
-using Remotis.Contract;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
-
-namespace Remotis.Contract
+namespace Cassis.Contract
 {
     [XmlRootAttribute("response")]
     public class PackageResponse

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{526F34EE-E76B-4C61-8105-0371B331C253}</ProjectGuid>
+    <ProjectGuid>{EAA2E41A-BC9D-4482-804F-4ADF847C9ED3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Remotis.Service</RootNamespace>
-    <AssemblyName>Remotis.Service</AssemblyName>
+    <RootNamespace>Cassis.Testing.Acceptance</RootNamespace>
+    <AssemblyName>Cassis.Testing.Acceptance</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,16 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_11.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll</HintPath>
+      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Management.IntegrationServices, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.Smo, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,32 +47,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CatalogPackageEngine.cs" />
-    <Compile Include="IPackageEngine.cs" />
-    <Compile Include="SqlHostedWithAuthPackageEngine.cs" />
-    <Compile Include="SqlHostedPackageEngine.cs" />
-    <Compile Include="FilePackageEngine.cs" />
-    <Compile Include="PackageCentricEngine.cs" />
-    <Compile Include="MessageType.cs" />
-    <Compile Include="PackageEvents.cs" />
+    <Compile Include="FileOnDisk.cs" />
+    <Compile Include="PackageTest.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
-    <Compile Include="..\AssemblyInfo.cs">
+    <Compile Include="..\..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="PackageService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Contract\Remotis.Contract.csproj">
+    <ProjectReference Include="..\..\Client\Cassis.Client.csproj">
+      <Project>{68157928-6bbf-4c2c-906c-f36a6c477d07}</Project>
+      <Name>Remotis.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Contract\Cassis.Contract.csproj">
       <Project>{8e66e7bc-68ed-4493-be3b-0322a02e65fe}</Project>
       <Name>Remotis.Contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Host\Console\Cassis.Host.Console.csproj">
+      <Project>{7f4573cc-8737-4489-a49d-b4050dbfa53d}</Project>
+      <Name>Remotis.Host.Console</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Host\Service\Cassis.Host.Service.csproj">
+      <Project>{00b12e14-0542-4ce6-a385-4d2ac984e232}</Project>
+      <Name>Remotis.Host.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Server\Cassis.Service.csproj">
+      <Project>{526f34ee-e76b-4c61-8105-0371b331c253}</Project>
+      <Name>Remotis.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Services.cd" />
+    <None Include="Cassis.Host.Console.exe.config" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\Sample.dtsx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-	   Other similar extension points exist, see Microsoft.Common.targets.
+       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">

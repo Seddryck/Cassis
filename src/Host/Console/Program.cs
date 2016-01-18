@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.ServiceModel;
-using Remotis.Service;
+using Cassis.Contract;
 
-namespace Remotis.Host.Console
+namespace Cassis.Host.Console
 {
     class Program
     {
         static void Main(string[] args)
         {
             System.Console.WriteLine("Console host is opening...");
-            var serviceHost = new ServiceHost(typeof(PackageService));
+            var serviceHost = new ServiceHost(typeof(IPackageService));
             serviceHost.Open();
             System.Console.WriteLine("Console host is listening... press ENTER to close");
             System.Console.Read();

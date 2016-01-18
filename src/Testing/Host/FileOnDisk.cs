@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace Remotis.Testing.Acceptance
+namespace Cassis.Testing.Acceptance
 {
     class FileOnDisk
     {

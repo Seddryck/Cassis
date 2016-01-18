@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Cassis.Contract
 {
-    public interface IPackageEvents
+    public interface IPackageInfo
     {
-        IList<string> Errors { get; set; }
+        string Name { get; set; }
+
     }
 }

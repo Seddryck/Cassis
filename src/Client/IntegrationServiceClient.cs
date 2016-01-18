@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.ServiceModel;
-using Remotis.Contract;
+using Cassis.Contract;
 
-namespace Remotis.Client
+namespace Cassis.Client
 {
     public class IntegrationServiceClient
     {
@@ -26,7 +26,7 @@ namespace Remotis.Client
             using (var factory = new DuplexChannelFactory<IPackageService>(context, serviceInfo.Binding, serviceInfo.Address ))
             {
                 var channel = factory.CreateChannel();
-                return channel.Run(package, null, null);
+                return channel.Run();
             }
         }
     }

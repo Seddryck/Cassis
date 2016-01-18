@@ -1,16 +1,16 @@
 ﻿using NUnit.Framework;
-using Remotis.Contract;
-using Remotis.Service;
+using Cassis.Contract;
+using Cassis.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Remotis.Testing.Service
+namespace Cassis.Testing.Service
 {
     [Category ("Integration")]
-    public class FilePackageServiceTest
+    public class FileServiceTest
     {
         public string PackageFullPath { get; set; }
 
@@ -49,7 +49,7 @@ namespace Remotis.Testing.Service
         #endregion
 
         [Test]
-        public void Run_FilePackage_Sucessful()
+        public void Run_Package_Sucessful()
         {
             var packageInfo = new FilePackage()
             {
@@ -58,37 +58,12 @@ namespace Remotis.Testing.Service
                 Name="Sample"
             };
             
-            var packageService = new PackageService();
-            var result = packageService.Run(packageInfo, null, null);
+            var packageService = new FileService(packageInfo);
+            var result = packageService.Run();
 
             Assert.That(result.Success, Is.True);
             Assert.That(result.Errors, Has.Count.EqualTo(0));
             Assert.That(File.Exists("Toto2.txt"));
-        }
-
-        public void Run_Parameters_Sucessful()
-        {
-            var packageInfo = new FilePackage()
-            {
-                Password = "p@ssw0rd",
-                Path = @"Etl\",
-                Name = "Sample"
-            };
-
-            var param = new PackageParameter()
-            {
-                Name = "DestinationPath",
-                Value = "Toto3.txt",
-            };
-            var parameters = new List<PackageParameter>() { param };
-
-            var packageService = new PackageService();
-            var result = packageService.Run(packageInfo, null, parameters);
-
-            Assert.That(result.Success, Is.True);
-            Assert.That(result.Errors, Has.Count.EqualTo(0));
-            Assert.That(!File.Exists("Toto2.txt"));
-            Assert.That(File.Exists("Toto3.txt"));
         }
 
 
