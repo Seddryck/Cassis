@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Cédric L. Charlier")]
 [assembly: AssemblyProduct("Cassis")]
-[assembly: AssemblyCopyright("Copyright © Cédric L. Charlier 2014")]
+[assembly: AssemblyCopyright("Copyright © Cédric L. Charlier 2014-2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
