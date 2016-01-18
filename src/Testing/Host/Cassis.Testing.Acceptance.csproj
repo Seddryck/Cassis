@@ -77,9 +77,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Remotis.Host.Console.exe.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Cassis.Host.Console.exe.config" />
     <None Include="packages.config" />
     <EmbeddedResource Include="Resources\Sample.dtsx" />
   </ItemGroup>

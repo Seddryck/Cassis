@@ -81,11 +81,10 @@
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Contract\Cassis.Contract.csproj">
       <Project>{8e66e7bc-68ed-4493-be3b-0322a02e65fe}</Project>
-      <Name>Remotis.Contract</Name>
+      <Name>Cassis.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
