@@ -11,7 +11,7 @@ using Microsoft.SqlServer.Dts.Runtime;
 namespace Cassis.Testing.Service
 {
     [Category ("Integration")]
-    public class SqlPackageServiceTest
+    public class SqlServiceTest
     {
         
 
@@ -63,7 +63,7 @@ namespace Cassis.Testing.Service
         #endregion
 
         [Test]
-        public void Run_FilePackage_Sucessful()
+        public void Run_Package_Sucessful()
         {
             var packageInfo = new SqlPackage()
             {
@@ -72,8 +72,8 @@ namespace Cassis.Testing.Service
                 Name="Sample"
             };
             
-            var packageService = new PackageService();
-            var result = packageService.Run(packageInfo);
+            var packageService = new SqlService(packageInfo);
+            var result = packageService.Run();
 
             Assert.That(result.Success, Is.True);
             Assert.That(result.Errors, Has.Count.EqualTo(0));

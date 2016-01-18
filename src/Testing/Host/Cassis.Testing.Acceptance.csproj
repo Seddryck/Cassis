@@ -67,7 +67,7 @@
       <Project>{7f4573cc-8737-4489-a49d-b4050dbfa53d}</Project>
       <Name>Remotis.Host.Console</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Host\Service\Remotis.Host.Service.csproj">
+    <ProjectReference Include="..\..\Host\Service\Cassis.Host.Service.csproj">
       <Project>{00b12e14-0542-4ce6-a385-4d2ac984e232}</Project>
       <Name>Remotis.Host.Service</Name>
     </ProjectReference>

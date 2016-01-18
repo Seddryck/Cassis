@@ -53,12 +53,13 @@
   <ItemGroup>
     <Compile Include="ConfigurationReader.cs" />
     <Compile Include="FileOnDisk.cs" />
-    <Compile Include="Integration\SqlPackageServiceTest.cs" />
-    <Compile Include="Integration\FilePackageServiceTest.cs" />
+    <Compile Include="Integration\SqlServiceTest.cs" />
+    <Compile Include="Integration\FileServiceTest.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
     <Compile Include="..\..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Unit\PackageServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Contract\Cassis.Contract.csproj">

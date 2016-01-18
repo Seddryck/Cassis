@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 namespace Cassis.Contract
 {
     [XmlRootAttribute("package-sql")]
-    public class SqlPackage
+    public class SqlPackage : IPackageInfo
     {
         [XmlAttribute("name")]
         public string Name { get; set; }

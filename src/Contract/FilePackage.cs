@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 namespace Cassis.Contract
 {
     [XmlRootAttribute("package-file")]
-    public class FilePackage
+    public class FilePackage : IPackageInfo
     {
         [XmlAttribute("name")]
         public string Name {get; set;}

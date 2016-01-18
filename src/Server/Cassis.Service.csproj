@@ -7,8 +7,8 @@
     <ProjectGuid>{526F34EE-E76B-4C61-8105-0371B331C253}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Remotis.Service</RootNamespace>
-    <AssemblyName>Remotis.Service</AssemblyName>
+    <RootNamespace>Cassis.Service</RootNamespace>
+    <AssemblyName>Cassis.Service</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -48,12 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractPackageService.cs" />
+    <Compile Include="SqlAuthenticationService.cs" />
+    <Compile Include="SqlService.cs" />
+    <Compile Include="FileService.cs" />
+    <Compile Include="CatalogService.cs" />
     <Compile Include="PackageEvents.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
     <Compile Include="..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="PackageService.cs" />
+    <Compile Include="PackageServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Contract\Cassis.Contract.csproj">

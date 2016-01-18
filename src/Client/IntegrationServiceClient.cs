@@ -26,7 +26,7 @@ namespace Cassis.Client
             using (var factory = new DuplexChannelFactory<IPackageService>(context, serviceInfo.Binding, serviceInfo.Address ))
             {
                 var channel = factory.CreateChannel();
-                return channel.Run(package, null);
+                return channel.Run();
             }
         }
     }

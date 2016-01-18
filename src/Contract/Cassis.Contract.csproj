@@ -7,8 +7,8 @@
     <ProjectGuid>{8E66E7BC-68ED-4493-BE3B-0322A02E65FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Remotis.Contract</RootNamespace>
-    <AssemblyName>Remotis.Contract</AssemblyName>
+    <RootNamespace>Cassis.Contract</RootNamespace>
+    <AssemblyName>Cassis.Contract</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="CatalogPackage.cs" />
     <Compile Include="IPackageEvents.cs" />
+    <Compile Include="IPackageInfo.cs" />
     <Compile Include="LogOption.cs" />
     <Compile Include="PackageResponse.cs" />
     <Compile Include="ILog.cs" />
@@ -60,7 +61,7 @@
     <Compile Include="..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="SqlAuthentification.cs" />
+    <Compile Include="SqlAuthenticationPackage.cs" />
     <Compile Include="SqlPackage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

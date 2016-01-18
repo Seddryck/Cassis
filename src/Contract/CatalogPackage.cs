@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 namespace Cassis.Contract
 {
     [XmlRootAttribute("package-catalog")]
-    public class CatalogPackage
+    public class CatalogPackage : IPackageInfo
     {
         [XmlAttribute("name")]
         public string Name { get; set; }
