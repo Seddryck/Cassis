@@ -59,7 +59,7 @@
     <Compile Include="..\..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Unit\PackageServiceFactory.cs" />
+    <Compile Include="Unit\PackageServiceFactoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Contract\Cassis.Contract.csproj">

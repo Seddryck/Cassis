@@ -17,7 +17,8 @@ namespace Cassis.Testing.Service.Unit
         [TestCase(typeof(CatalogPackage), typeof(CatalogService))]
         public void Get_FilePackage_FileService(Type packageType, Type serviceType)
         {
-            var packageInfo = packageType.GetConstructor(new Type[] { }) as IPackageInfo;
+            var ctor = packageType.GetConstructor(new Type[] { });
+            var packageInfo = ctor.Invoke(new object[] { }) as IPackageInfo;
             var factory = new PackageServiceFactory();
 
             var service = factory.Get(packageInfo);
