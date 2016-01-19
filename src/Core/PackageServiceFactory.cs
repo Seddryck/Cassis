@@ -1,6 +1,8 @@
 ﻿using Cassis.Core;
 using Cassis.Core.Service;
+#if ! SqlServer2008R2
 using Cassis.Core.Service.Catalog;
+#endif
 using Cassis.Core.Service.File;
 using Cassis.Core.Service.SqlAuthentication;
 using Cassis.Core.Service.SqlHosted;
