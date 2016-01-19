@@ -1,4 +1,5 @@
-﻿using Cassis.Core;
+﻿#if ! SqlServer2008R2
+using Cassis.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -130,3 +131,4 @@ namespace Cassis.Core.Service.Catalog
         }
     }
 }
+#endif
