@@ -1,12 +1,16 @@
-﻿using Cassis.Contract;
-using Cassis.Service;
+﻿using Cassis.Core;
+using Cassis.Core.Service;
+using Cassis.Core.Service.Catalog;
+using Cassis.Core.Service.File;
+using Cassis.Core.Service.SqlAuthentication;
+using Cassis.Core.Service.SqlHosted;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cassis.Testing.Service.Unit
+namespace Cassis.Testing.Core.Unit
 {
     public class PackageServiceFactoryTest
     {

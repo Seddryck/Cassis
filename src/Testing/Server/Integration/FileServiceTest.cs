@@ -1,13 +1,12 @@
-﻿using NUnit.Framework;
-using Cassis.Contract;
-using Cassis.Service;
+﻿using Cassis.Core.Service.File;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Cassis.Testing.Service
+namespace Cassis.Testing.Core.Integration
 {
     [Category ("Integration")]
     public class FileServiceTest
@@ -31,7 +30,8 @@ namespace Cassis.Testing.Service
         {
             //Build the fullpath for the file to read
             Directory.CreateDirectory("Etl");
-            PackageFullPath = FileOnDisk.CreatePhysicalFile(@"Etl\Sample.dtsx", string.Format("{0}.Resources.Sample.dtsx", this.GetType().Namespace));
+            var @namespace = this.GetType().Assembly.GetName().Name;
+            PackageFullPath = FileOnDisk.CreatePhysicalFile(@"Etl\Sample.dtsx", string.Format("{0}.Resources.Sample.dtsx", @namespace));
         }
 
         [TearDown]

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace Cassis.Testing.Service
+namespace Cassis.Testing.Core
 {
     public class ConfigurationReader
     {

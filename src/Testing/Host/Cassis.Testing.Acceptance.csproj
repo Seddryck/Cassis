@@ -55,25 +55,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Client\Cassis.Client.csproj">
-      <Project>{68157928-6bbf-4c2c-906c-f36a6c477d07}</Project>
-      <Name>Remotis.Client</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Contract\Cassis.Contract.csproj">
-      <Project>{8e66e7bc-68ed-4493-be3b-0322a02e65fe}</Project>
-      <Name>Remotis.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Host\Console\Cassis.Host.Console.csproj">
-      <Project>{7f4573cc-8737-4489-a49d-b4050dbfa53d}</Project>
-      <Name>Remotis.Host.Console</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Host\Service\Cassis.Host.Service.csproj">
-      <Project>{00b12e14-0542-4ce6-a385-4d2ac984e232}</Project>
-      <Name>Remotis.Host.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Server\Cassis.Service.csproj">
+    <ProjectReference Include="..\..\Core\Service\Cassis.Core.csproj">
       <Project>{526f34ee-e76b-4c61-8105-0371b331c253}</Project>
-      <Name>Remotis.Service</Name>
+      <Name>Cassis.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

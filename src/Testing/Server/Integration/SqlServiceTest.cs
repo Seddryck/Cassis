@@ -1,20 +1,19 @@
-﻿using NUnit.Framework;
-using Cassis.Contract;
-using Cassis.Service;
+﻿using Cassis.Core.Service.SqlHosted;
+using Microsoft.SqlServer.Dts.Runtime;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Microsoft.SqlServer.Dts.Runtime;
 
-namespace Cassis.Testing.Service
+
+
+namespace Cassis.Testing.Core.Integration
 {
     [Category ("Integration")]
     public class SqlServiceTest
     {
-        
-
         #region Setup & Cleanup
         [SetUp]
         public void InitializeTestEnvironement()
@@ -32,7 +31,8 @@ namespace Cassis.Testing.Service
         {
             //Build the fullpath for the file to read
             Directory.CreateDirectory("Etl");
-            var packageFullPath = FileOnDisk.CreatePhysicalFile(@"Etl\Sample.dtsx", string.Format("{0}.Resources.Sample.dtsx", this.GetType().Namespace));
+            var @namespace = this.GetType().Assembly.GetName().Name;
+            var packageFullPath = FileOnDisk.CreatePhysicalFile(@"Etl\Sample.dtsx", string.Format("{0}.Resources.Sample.dtsx", @namespace));
 
             CleanPackage();
             var integrationServer = new Application();
