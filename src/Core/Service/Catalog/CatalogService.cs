@@ -12,12 +12,12 @@ namespace Cassis.Core.Service.Catalog
 {
     class CatalogService : AbstractPackageService
     {
-        public new CatalogPackage PackageInfo
+        public new ICatalogPackage PackageInfo
         {
-            get { return base.PackageInfo as CatalogPackage; }
+            get { return base.PackageInfo as ICatalogPackage; }
         }
 
-        public CatalogService(CatalogPackage packageInfo)
+        public CatalogService(ICatalogPackage packageInfo)
             : base(packageInfo)
         { }
 
@@ -26,13 +26,16 @@ namespace Cassis.Core.Service.Catalog
             return Run(PackageInfo);
         }
 
-        protected PackageResponse Run(CatalogPackage etl)
+        protected PackageResponse Run(ICatalogPackage etl)
         {
             var connection = new SqlConnection(string.Format(@"Data Source={0};Initial Catalog=master;Integrated Security=SSPI;", etl.Server));
             var integrationServices = new Ssis.IntegrationServices(connection);
 
             var package = GetPackage(integrationServices, etl);
-            var environmentReference = GetEnvironmentReference(package.Parent, etl.Environment);
+
+            Ssis.EnvironmentReference environmentReference = null;
+            if (etl is IEnvironment)
+                environmentReference = GetEnvironmentReference(package.Parent, (etl as IEnvironment).Environment);
 
             var setValueParameters = new Collection<Ssis.PackageInfo.ExecutionValueParameterSet>();
             setValueParameters.Add(new Ssis.PackageInfo.ExecutionValueParameterSet
@@ -41,8 +44,13 @@ namespace Cassis.Core.Service.Catalog
                 , ParameterName = "SYNCHRONIZED"
                 , ParameterValue = 1
             });
-            var parameters = Parameterize(package.Parameters, package.Name, etl.Parameters);
-            parameters.ToList().ForEach(p => setValueParameters.Add(p));
+
+            if (etl is IParameters)
+            {
+                var parameters = Parameterize(package.Parameters, package.Name, (etl as IParameters).Parameters);
+                parameters.ToList().ForEach(p => setValueParameters.Add(p));
+            }
+            
 
             long executionIdentifier = -1;
 
@@ -56,7 +64,7 @@ namespace Cassis.Core.Service.Catalog
             return new PackageResponse(execution.Status == Ssis.Operation.ServerOperationStatus.Success);
         }
 
-        private Ssis.PackageInfo GetPackage(Ssis.IntegrationServices integrationServices, CatalogPackage etl)
+        private Ssis.PackageInfo GetPackage(Ssis.IntegrationServices integrationServices, ICatalogPackage etl)
         {
             if (!integrationServices.Catalogs.Contains(etl.Catalog))
             {

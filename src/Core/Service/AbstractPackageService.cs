@@ -1,4 +1,5 @@
 ﻿using Cassis.Core;
+using Microsoft.SqlServer.Dts.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,26 @@ namespace Cassis.Core.Service
         }
 
         public abstract PackageResponse Run();
+
+        protected virtual void Parameterize(IEnumerable<PackageParameter> parameters, ref Package package)
+        {
+            foreach (var param in parameters)
+            {
+#if !SqlServer2008R2
+                if (package.Parameters.Contains(param.Name))
+                    package.Parameters[param.Name].Value = param.Value.ToString();
+                else
+                {
+#endif
+                    if (package.Variables.Contains(param.Name))
+                        package.Variables[param.Name].Value = DefineValue(param.Value.ToString(), package.Variables[param.Name].DataType);
+                    else
+                        throw new ArgumentOutOfRangeException("param.Name", string.Format("No parameter or variable named '{0}' found in the package {1}, can't override its value for execution.", param.Name, package.Name));
+#if !SqlServer2008R2
+                }
+#endif
+            }
+        }
 
         protected virtual object DefineValue(string value, TypeCode typeCode)
         {

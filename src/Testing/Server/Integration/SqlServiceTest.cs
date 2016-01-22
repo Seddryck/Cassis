@@ -1,5 +1,6 @@
 ﻿using Cassis.Core.Service.SqlHosted;
 using Microsoft.SqlServer.Dts.Runtime;
+using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -65,12 +66,13 @@ namespace Cassis.Testing.Core.Integration
         [Test]
         public void Run_Package_Sucessful()
         {
-            var packageInfo = new SqlHostedPackage()
-            {
-                Password="p@ssw0rd",
-                Path = @"File System\CassisTesting\",
-                Name="Sample"
-            };
+            var packageInfo = Mock.Of<ISqlHostedPackage>
+            (
+                p =>
+                p.Password=="p@ssw0rd" &&
+                p.Path == @"File System\CassisTesting\" &&
+                p.Name =="Sample"
+            );
             
             var packageService = new SqlHostedService(packageInfo);
             var result = packageService.Run();

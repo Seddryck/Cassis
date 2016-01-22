@@ -10,7 +10,7 @@
     <ProjectGuid>{526F34EE-E76B-4C61-8105-0371B331C253}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cassis.Core.$(Version)</RootNamespace>
+    <RootNamespace>Cassis.Core</RootNamespace>
     <AssemblyName>Cassis.Core.$(Version)</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -94,14 +94,16 @@
     <Compile Include="PackageServiceFactory.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
     <Compile Include="Service\AbstractPackageService.cs" />
-    <Compile Include="Service\Catalog\CatalogPackage.cs" />
+    <Compile Include="Service\Catalog\ICatalogPackage.cs" />
     <Compile Include="Service\Catalog\CatalogService.cs" />
-    <Compile Include="Service\File\FilePackage.cs" />
+    <Compile Include="Service\Catalog\IEnvironment.cs" />
+    <Compile Include="Service\File\IFilePackage.cs" />
     <Compile Include="Service\File\FileService.cs" />
+    <Compile Include="Service\IParameters.cs" />
     <Compile Include="Service\PackageInfoExtensions.cs" />
-    <Compile Include="Service\SqlAuthentication\SqlAuthenticationPackage.cs" />
+    <Compile Include="Service\SqlAuthentication\ISqlAuthenticationPackage.cs" />
     <Compile Include="Service\SqlAuthentication\SqlAuthenticationService.cs" />
-    <Compile Include="Service\SqlHosted\SqlHostedPackage.cs" />
+    <Compile Include="Service\SqlHosted\ISqlHostedPackage.cs" />
     <Compile Include="Service\SqlHosted\SqlHostedService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

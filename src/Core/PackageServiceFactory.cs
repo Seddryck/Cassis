@@ -18,15 +18,15 @@ namespace Cassis.Core
         public virtual IPackageService Get(IPackageInfo packageInfo)
         {
             #if !SqlServer2008R2
-            if (packageInfo is CatalogPackage)
-                return new CatalogService(packageInfo as CatalogPackage);
+            if (packageInfo is ICatalogPackage)
+                return new CatalogService(packageInfo as ICatalogPackage);
             #endif
-            if (packageInfo is SqlAuthenticationPackage)
-                return new SqlAuthenticationService(packageInfo as SqlAuthenticationPackage);
-            if (packageInfo is SqlHostedPackage)
-                return new SqlHostedService(packageInfo as SqlHostedPackage);
-            if (packageInfo is FilePackage)
-                return new FileService(packageInfo as FilePackage);
+            if (packageInfo is ISqlAuthenticationPackage)
+                return new SqlAuthenticationService(packageInfo as ISqlAuthenticationPackage);
+            if (packageInfo is ISqlHostedPackage)
+                return new SqlHostedService(packageInfo as ISqlHostedPackage);
+            if (packageInfo is IFilePackage)
+                return new FileService(packageInfo as IFilePackage);
             throw new ArgumentException();
         }
 

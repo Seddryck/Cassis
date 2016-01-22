@@ -6,9 +6,9 @@ using System.Xml.Serialization;
 namespace Cassis.Core.Service.SqlAuthentication
 {
     [XmlRootAttribute("package-sql-authentification")]
-    public class SqlAuthenticationPackage : SqlHostedPackage
+    public interface ISqlAuthenticationPackage : ISqlHostedPackage
     {
         [XmlAttribute("username")]
-        public string UserName { get; set; }
+        string UserName { get; set; }
     }
 }

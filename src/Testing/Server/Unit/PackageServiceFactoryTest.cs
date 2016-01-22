@@ -4,6 +4,7 @@ using Cassis.Core.Service.Catalog;
 using Cassis.Core.Service.File;
 using Cassis.Core.Service.SqlAuthentication;
 using Cassis.Core.Service.SqlHosted;
+using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,15 +15,21 @@ namespace Cassis.Testing.Core.Unit
 {
     public class PackageServiceFactoryTest
     {
+        public static object DynamicMock(Type type)
+        {
+            var mock = typeof(Mock<>).MakeGenericType(type).GetConstructor(Type.EmptyTypes).Invoke(new object[] { });
+            return mock.GetType().GetProperties().Single(f => f.Name == "Object" && f.PropertyType == type).GetValue(mock, new object[] { });
+        }
+
         [Test]
-        [TestCase(typeof(FilePackage), typeof(FileService))]
-        [TestCase(typeof(SqlHostedPackage), typeof(SqlHostedService))]
-        [TestCase(typeof(SqlAuthenticationPackage), typeof(SqlAuthenticationService))]
-        [TestCase(typeof(CatalogPackage), typeof(CatalogService))]
+        [TestCase(typeof(IFilePackage), typeof(FileService))]
+        [TestCase(typeof(ISqlHostedPackage), typeof(SqlHostedService))]
+        [TestCase(typeof(ISqlAuthenticationPackage), typeof(SqlAuthenticationService))]
+        [TestCase(typeof(ICatalogPackage), typeof(CatalogService))]
         public void Get_Package_CorrespondingService(Type packageType, Type serviceType)
         {
-            var ctor = packageType.GetConstructor(new Type[] { });
-            var packageInfo = ctor.Invoke(new object[] { }) as IPackageInfo;
+            
+            var packageInfo = DynamicMock(packageType) as IPackageInfo;
             var factory = new PackageServiceFactory();
 
             var service = factory.Get(packageInfo);
@@ -30,14 +37,13 @@ namespace Cassis.Testing.Core.Unit
         }
 
         [Test]
-        [TestCase(typeof(FilePackage), typeof(FileService))]
-        [TestCase(typeof(SqlHostedPackage), typeof(SqlHostedService))]
-        [TestCase(typeof(SqlAuthenticationPackage), typeof(SqlAuthenticationService))]
-        [TestCase(typeof(CatalogPackage), typeof(CatalogService))]
+        [TestCase(typeof(IFilePackage), typeof(FileService))]
+        [TestCase(typeof(ISqlHostedPackage), typeof(SqlHostedService))]
+        [TestCase(typeof(ISqlAuthenticationPackage), typeof(SqlAuthenticationService))]
+        [TestCase(typeof(ICatalogPackage), typeof(CatalogService))]
         public void Get_PackageParameters_CorrespondingServiceAndParameters(Type packageType, Type serviceType)
         {
-            var ctor = packageType.GetConstructor(new Type[] { });
-            var packageInfo = ctor.Invoke(new object[] { }) as IPackageInfo;
+            var packageInfo = DynamicMock(packageType) as IPackageInfo;
 
             var parameters = new List<PackageParameter>()
             {
@@ -52,5 +58,7 @@ namespace Cassis.Testing.Core.Unit
             var serviceClass = service as AbstractPackageService;
             Assert.That(serviceClass.Parameters, Has.Count.EqualTo(2));
         }
+
+        
     }
 }

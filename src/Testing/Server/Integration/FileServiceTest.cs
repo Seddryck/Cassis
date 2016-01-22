@@ -1,4 +1,5 @@
 ﻿using Cassis.Core.Service.File;
+using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -51,12 +52,13 @@ namespace Cassis.Testing.Core.Integration
         [Test]
         public void Run_Package_Sucessful()
         {
-            var packageInfo = new FilePackage()
-            {
-                Password="p@ssw0rd",
-                Path=@"Etl\",
-                Name="Sample"
-            };
+            var packageInfo = Mock.Of<IFilePackage>
+            (
+                p =>
+                p.Password=="p@ssw0rd" &&
+                p.Path ==@"Etl\" &&
+                p.Name =="Sample"
+            );
             
             var packageService = new FileService(packageInfo);
             var result = packageService.Run();

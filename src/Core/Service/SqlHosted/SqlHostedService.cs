@@ -1,4 +1,5 @@
 ﻿using Cassis.Core;
+using Cassis.Core.Service;
 using Microsoft.SqlServer.Dts.Runtime;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,12 @@ namespace Cassis.Core.Service.SqlHosted
 {
     class SqlHostedService : AbstractPackageService
     {
-        public new SqlHostedPackage PackageInfo
+        public new ISqlHostedPackage PackageInfo
         {
-            get { return base.PackageInfo as SqlHostedPackage; }
+            get { return base.PackageInfo as ISqlHostedPackage; }
         }
 
-        public SqlHostedService(SqlHostedPackage packageInfo)
+        public SqlHostedService(ISqlHostedPackage packageInfo)
             : base(packageInfo)
         { }
 
@@ -25,7 +26,7 @@ namespace Cassis.Core.Service.SqlHosted
             return Run(PackageInfo);
         }
 
-        protected PackageResponse Run(SqlHostedPackage etl)
+        protected PackageResponse Run(ISqlHostedPackage etl)
         {
             var integrationServices = new Application();
             if (!string.IsNullOrEmpty(etl.Password))
@@ -33,32 +34,12 @@ namespace Cassis.Core.Service.SqlHosted
 
             var package = integrationServices.LoadFromDtsServer(etl.Path + etl.Name, etl.Server, null);
 
-            if (etl.Parameters!=null)
-                Parameterize(etl.Parameters, ref package);
+            if ((etl as IParameters)?.Parameters!=null)
+                Parameterize((etl as IParameters).Parameters, ref package);
 
             var events = new PackageEvents();
             var packageResult = package.Execute(null, null, events, null, null);
             return new PackageResponse(packageResult == DTSExecResult.Success, events);
-        }
-
-        protected virtual void Parameterize(IEnumerable<PackageParameter> parameters, ref Package package)
-        {
-            foreach (var param in parameters)
-            {
-#if !SqlServer2008R2
-                if (package.Parameters.Contains(param.Name))
-                    package.Parameters[param.Name].Value = param.Value.ToString();
-                else
-                {
-#endif
-                    if (package.Variables.Contains(param.Name))
-                        package.Variables[param.Name].Value = DefineValue(param.Value.ToString(), package.Variables[param.Name].DataType);
-                    else
-                        throw new ArgumentOutOfRangeException("param.Name", string.Format("No parameter or variable named '{0}' found in the package {1}, can't override its value for execution.", param.Name, package.Name));
-#if !SqlServer2008R2
-                }
-#endif
-            }
         }
     }
 }
