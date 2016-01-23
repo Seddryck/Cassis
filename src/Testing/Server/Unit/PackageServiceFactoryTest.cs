@@ -46,10 +46,10 @@ namespace Cassis.Testing.Core.Unit
         {
             var packageInfo = DynamicMock(packageType) as IPackageInfo;
 
-            var parameters = new List<PackageParameter>()
+            var parameters = new List<IPackageParameter>()
             {
-                new PackageParameter() { Name="first", Value = 16}
-                , new PackageParameter() { Name="second", Value = "seventeen"}
+                Mock.Of<IPackageParameter>(p => p.Name=="first" && p.Value == (object)16)
+                , Mock.Of<IPackageParameter>(p => p.Name == "second" && p.Value == (object)"seventeen")
             };
             var factory = new PackageServiceFactory();
 

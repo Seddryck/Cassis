@@ -31,7 +31,7 @@ namespace Cassis.Core
             throw new ArgumentException();
         }
 
-        public virtual IPackageService Get(IPackageInfo packageInfo, IEnumerable<PackageParameter> parameters)
+        public virtual IPackageService Get(IPackageInfo packageInfo, IEnumerable<IPackageParameter> parameters)
         {
             var service = Get(packageInfo) as AbstractPackageService;
             service.Parameters = parameters;
@@ -42,7 +42,7 @@ namespace Cassis.Core
         public virtual IPackageService Get
         (
             IPackageInfo packageInfo
-            , IEnumerable<PackageParameter> parameters
+            , IEnumerable<IPackageParameter> parameters
             , LogAction log
         )
         {

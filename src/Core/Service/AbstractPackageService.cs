@@ -18,33 +18,35 @@ namespace Cassis.Core.Service
             get { return packageInfo; }
         }
 
-        public IEnumerable<PackageParameter> Parameters { get; set; }
+        public IEnumerable<IPackageParameter> Parameters { get; set; }
 
         public AbstractPackageService(IPackageInfo packageInfo)
         {
             this.packageInfo = packageInfo;
+            this.Parameters = new List<IPackageParameter>();
         }
 
         public abstract PackageResponse Run();
 
-        protected virtual void Parameterize(IEnumerable<PackageParameter> parameters, ref Package package)
+        protected virtual void Parameterize(ref Package package)
         {
-            foreach (var param in parameters)
-            {
-#if !SqlServer2008R2
-                if (package.Parameters.Contains(param.Name))
-                    package.Parameters[param.Name].Value = param.Value.ToString();
-                else
+            if (Parameters!=null)
+                foreach (var param in Parameters)
                 {
-#endif
-                    if (package.Variables.Contains(param.Name))
-                        package.Variables[param.Name].Value = DefineValue(param.Value.ToString(), package.Variables[param.Name].DataType);
+    #if !SqlServer2008R2
+                    if (package.Parameters.Contains(param.Name))
+                        package.Parameters[param.Name].Value = param.Value.ToString();
                     else
-                        throw new ArgumentOutOfRangeException("param.Name", string.Format("No parameter or variable named '{0}' found in the package {1}, can't override its value for execution.", param.Name, package.Name));
-#if !SqlServer2008R2
+                    {
+    #endif
+                        if (package.Variables.Contains(param.Name))
+                            package.Variables[param.Name].Value = DefineValue(param.Value.ToString(), package.Variables[param.Name].DataType);
+                        else
+                            throw new ArgumentOutOfRangeException("param.Name", string.Format("No parameter or variable named '{0}' found in the package {1}, can't override its value for execution.", param.Name, package.Name));
+    #if !SqlServer2008R2
+                    }
+    #endif
                 }
-#endif
-            }
         }
 
         public LogAction Log;

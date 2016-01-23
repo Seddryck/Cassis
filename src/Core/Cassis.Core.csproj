@@ -92,7 +92,7 @@
     <Compile Include="Logging\LogEventArgs.cs" />
     <Compile Include="Logging\LogGateway.cs" />
     <Compile Include="PackageEvents.cs" />
-    <Compile Include="PackageParameter.cs" />
+    <Compile Include="Service\IPackageParameter.cs" />
     <Compile Include="PackageResponse.cs" />
     <Compile Include="PackageServiceFactory.cs" />
     <Compile Include="Properties\ProjectAssemblyInfo.cs" />
@@ -103,7 +103,6 @@
     <Compile Include="Service\Catalog\IEnvironment.cs" />
     <Compile Include="Service\File\IFilePackage.cs" />
     <Compile Include="Service\File\FileService.cs" />
-    <Compile Include="Service\IParameters.cs" />
     <Compile Include="Service\PackageInfoExtensions.cs" />
     <Compile Include="Service\SqlAuthentication\ISqlAuthenticationPackage.cs" />
     <Compile Include="Service\SqlAuthentication\SqlAuthenticationService.cs" />

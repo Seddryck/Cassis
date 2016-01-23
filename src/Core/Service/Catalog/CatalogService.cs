@@ -45,13 +45,8 @@ namespace Cassis.Core.Service.Catalog
                 , ParameterValue = 1
             });
 
-            if (etl is IParameters)
-            {
-                var parameters = Parameterize(package.Parameters, package.Name, (etl as IParameters).Parameters);
-                parameters.ToList().ForEach(p => setValueParameters.Add(p));
-            }
-            
-
+            var parameters = Parameterize(package.Parameters, package.Name, Parameters);
+                
             long executionIdentifier = -1;
 
             if (etl.Timeout == 0)
@@ -120,7 +115,7 @@ namespace Cassis.Core.Service.Catalog
             return project.References[folder.Environments[environmentName].Name, folder.Name];
         }
 
-        protected virtual IEnumerable<Ssis.PackageInfo.ExecutionValueParameterSet> Parameterize(Ssis.ParameterCollection existingParameters, string packageName, IEnumerable<PackageParameter> overridenParameters)
+        protected virtual IEnumerable<Ssis.PackageInfo.ExecutionValueParameterSet> Parameterize(Ssis.ParameterCollection existingParameters, string packageName, IEnumerable<IPackageParameter> overridenParameters)
         {
             foreach (var param in overridenParameters)
             {

@@ -1,5 +1,6 @@
 ﻿using Cassis.Core;
 using Cassis.Core.Logging;
+using Cassis.Core.Service;
 using Cassis.Core.Service.SqlHosted;
 using Microsoft.SqlServer.Dts.Runtime;
 using Moq;
@@ -30,6 +31,9 @@ namespace Cassis.Testing.Core.Integration
         {
             if (File.Exists(@"..\..\Toto.txt"))
                 File.Delete(@"..\..\Toto.txt");
+
+            if (File.Exists(@"..\..\Toto2.txt"))
+                File.Delete(@"..\..\Toto2.txt");
         }
         private void DeployPackage()
         {
@@ -84,6 +88,33 @@ namespace Cassis.Testing.Core.Integration
             Assert.That(result.Success, Is.True);
             Assert.That(result.Errors, Has.Count.EqualTo(0));
             Assert.That(File.Exists(@"..\..\Toto.txt"));
+        }
+
+        [Test]
+        public void Run_PackageWithParameter_Sucessful()
+        {
+            var packageInfo = Mock.Of<ISqlHostedPackage>
+            (
+                p =>
+                p.Password == "p@ssw0rd" &&
+                p.Path == @"File System\CassisTesting\" &&
+                p.Name == "Sample"
+            );
+
+            var parameters = new List<IPackageParameter>();
+            var parameter = Mock.Of<IPackageParameter>
+            (
+                p =>
+                p.Name == "DestinationPath" &&
+                p.Value == (object)@"C:\Users\Cedri\Projects\Cassis\src\Testing\Server\Toto2.txt"
+            );
+            parameters.Add(parameter);
+
+            var factory = new PackageServiceFactory();
+            var packageService = factory.Get(packageInfo, parameters);
+            packageService.Run();
+
+            Assert.That(File.Exists(@"..\..\Toto2.txt"));
         }
 
         [Test]

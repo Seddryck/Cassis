@@ -25,8 +25,7 @@ namespace Cassis.Core.Service
 
             var package = Load(ref integrationServices);
 
-            if ((etl as IParameters)?.Parameters != null)
-                Parameterize((etl as IParameters).Parameters, ref package);
+            Parameterize(ref package);
 
             var events = new PackageEvents();
 
