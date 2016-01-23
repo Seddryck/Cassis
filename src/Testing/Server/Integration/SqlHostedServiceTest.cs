@@ -1,9 +1,12 @@
-﻿using Cassis.Core.Service.SqlHosted;
+﻿using Cassis.Core;
+using Cassis.Core.Logging;
+using Cassis.Core.Service.SqlHosted;
 using Microsoft.SqlServer.Dts.Runtime;
 using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,7 +16,7 @@ using System.Text;
 namespace Cassis.Testing.Core.Integration
 {
     [Category ("Integration")]
-    public class SqlServiceTest
+    public class SqlHostedServiceTest
     {
         #region Setup & Cleanup
         [SetUp]
@@ -25,13 +28,14 @@ namespace Cassis.Testing.Core.Integration
 
         private void CleanOutputFile()
         {
-            if (File.Exists("Toto2.txt"))
-                File.Delete("Toto2.txt");
+            if (File.Exists(@"..\..\Toto.txt"))
+                File.Delete(@"..\..\Toto.txt");
         }
         private void DeployPackage()
         {
             //Build the fullpath for the file to read
-            Directory.CreateDirectory("Etl");
+            if (!Directory.Exists("Etl"))
+                Directory.CreateDirectory("Etl");
             var @namespace = this.GetType().Assembly.GetName().Name;
             var packageFullPath = FileOnDisk.CreatePhysicalFile(@"Etl\Sample.dtsx", string.Format("{0}.Resources.Sample.dtsx", @namespace));
 
@@ -79,7 +83,49 @@ namespace Cassis.Testing.Core.Integration
 
             Assert.That(result.Success, Is.True);
             Assert.That(result.Errors, Has.Count.EqualTo(0));
-            Assert.That(File.Exists("Toto2.txt"));
+            Assert.That(File.Exists(@"..\..\Toto.txt"));
+        }
+
+        [Test]
+        public void Run_PackageWithLogger_LogCalled()
+        {
+            var packageInfo = Mock.Of<ISqlHostedPackage>
+            (
+                p =>
+                p.Password == "p@ssw0rd" &&
+                p.Path == @"File System\CassisTesting\" &&
+                p.Name == "Sample"
+            );
+
+            var count = 0;
+            LogAction log = (string a, string b, string c, string d, string e, string f, string g, DateTime h, DateTime i, int j, ref byte[] dataBytes) => count++;
+
+            var factory = new PackageServiceFactory();
+            var packageService = factory.Get(packageInfo, null, log);
+            var result = packageService.Run();
+
+            Assert.That(count, Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void Run_PackageWithLogger_PackageEndIsReceived()
+        {
+            var packageInfo = Mock.Of<ISqlHostedPackage>
+            (
+                p =>
+                p.Password == "p@ssw0rd" &&
+                p.Path == @"File System\CassisTesting\" &&
+                p.Name == "Sample"
+            );
+
+            var packageEnd = false;
+            LogAction log = (string eventName, string b, string c, string d, string e, string f, string g, DateTime h, DateTime i, int j, ref byte[] dataBytes) => packageEnd = eventName == "PackageEnd";
+
+            var factory = new PackageServiceFactory();
+            var packageService = factory.Get(packageInfo, null, log);
+            var result = packageService.Run();
+
+            Assert.That(packageEnd, Is.True);
         }
 
 

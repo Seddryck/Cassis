@@ -1,4 +1,5 @@
 ﻿using Cassis.Core;
+using Cassis.Core.Logging;
 using Cassis.Core.Service;
 #if ! SqlServer2008R2
 using Cassis.Core.Service.Catalog;
@@ -34,6 +35,20 @@ namespace Cassis.Core
         {
             var service = Get(packageInfo) as AbstractPackageService;
             service.Parameters = parameters;
+
+            return service;
+        }
+
+        public virtual IPackageService Get
+        (
+            IPackageInfo packageInfo
+            , IEnumerable<PackageParameter> parameters
+            , LogAction log
+        )
+        {
+            var service = Get(packageInfo) as AbstractPackageService;
+            service.Parameters = parameters;
+            service.Log = log;
 
             return service;
         }

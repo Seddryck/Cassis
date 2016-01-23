@@ -1,4 +1,5 @@
 ﻿using Cassis.Core;
+using Cassis.Core.Logging;
 using Cassis.Core.Service;
 using Cassis.Core.Service.Catalog;
 using Cassis.Core.Service.File;
@@ -59,6 +60,23 @@ namespace Cassis.Testing.Core.Unit
             Assert.That(serviceClass.Parameters, Has.Count.EqualTo(2));
         }
 
-        
+        [Test]
+        [TestCase(typeof(IFilePackage), typeof(FileService))]
+        [TestCase(typeof(ISqlHostedPackage), typeof(SqlHostedService))]
+        [TestCase(typeof(ISqlAuthenticationPackage), typeof(SqlAuthenticationService))]
+        [TestCase(typeof(ICatalogPackage), typeof(CatalogService))]
+        public void Get_PackageParameters_CorrespondingServiceAndLog(Type packageType, Type serviceType)
+        {
+            var packageInfo = DynamicMock(packageType) as IPackageInfo;
+            var logger = new LogEventService();
+            var factory = new PackageServiceFactory();
+
+            var service = factory.Get(packageInfo, null, logger.Log);
+            Assert.That(service, Is.TypeOf(serviceType));
+
+            var serviceClass = service as AbstractPackageService;
+        }
+
+
     }
 }

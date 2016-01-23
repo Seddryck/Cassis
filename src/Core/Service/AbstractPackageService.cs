@@ -1,4 +1,6 @@
 ﻿using Cassis.Core;
+using Cassis.Core.Logging;
+using Cassis.Core.Service.File;
 using Microsoft.SqlServer.Dts.Runtime;
 using System;
 using System.Collections.Generic;
@@ -44,6 +46,8 @@ namespace Cassis.Core.Service
 #endif
             }
         }
+
+        public LogAction Log;
 
         protected virtual object DefineValue(string value, TypeCode typeCode)
         {

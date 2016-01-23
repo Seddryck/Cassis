@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">ATLANTIS</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="ou4AhxEREA==" SSIS:IV="ETx1wiSg6TU=">beSPOODDbYIG5cMsgzhxntgutLP+5Rl3SC16ehJ0rqEygv0GfpTdiHJmhLwZ35VxyBIQ3yAva6PZ7uBzW8e5xRaJiOkYD3pIKpM7d7Man07OnCRkK3beDtH0/FpneqPV5m+v8gPqmnGoYfxAvWrvZER7uZo+266N/F8MDVRpSPFDEg8WMw3tWQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="dE971LC35g==" SSIS:IV="Q6gV5+JlVYM=">HsVwtwnFackHFHuaUkjXM3ndyH4F8AcnmxV8pKXotCPFQU5zn0iKoiU7za0JtyfdW4C93W1UcWF1Xm91ZiHw93p5gR4FDLk32VovIHuF6ZdjN+Kq0v4ROAFK+EdVXXnUloAl6dJE32xoys733sHrFBJYW1Q+hvN4fIog8lxLWGfHh/38HC3jiA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -42,10 +42,10 @@
                 <SSIS:Property SSIS:Name="Name">Sample</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">22</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">26</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{183444AA-7F3C-4196-878E-0E190DA9E345}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{466FAA11-D162-4E9E-8805-170BF061B2B7}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -62,7 +62,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Cédric\Projects\Cassis\src\Testing\Server\Toto.txt</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\Users\Cedri\Projects\Cassis\src\Testing\Server\Toto.txt</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -198,6 +198,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

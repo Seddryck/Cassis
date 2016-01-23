@@ -1,4 +1,6 @@
-﻿using Cassis.Core.Service.File;
+﻿using Cassis.Core;
+using Cassis.Core.Logging;
+using Cassis.Core.Service.File;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -24,8 +26,8 @@ namespace Cassis.Testing.Core.Integration
 
         private void CleanOutputFile()
         {
-            if (File.Exists("Toto2.txt"))
-                File.Delete("Toto2.txt");
+            if (File.Exists(@"..\..\Toto.txt"))
+                File.Delete(@"..\..\Toto.txt");
         }
         private void DeployPackage()
         {
@@ -65,7 +67,49 @@ namespace Cassis.Testing.Core.Integration
 
             Assert.That(result.Success, Is.True);
             Assert.That(result.Errors, Has.Count.EqualTo(0));
-            Assert.That(File.Exists("Toto2.txt"));
+            Assert.That(File.Exists(@"..\..\Toto.txt"));
+        }
+
+        [Test]
+        public void Run_PackageWithLogger_LogCalled()
+        {
+            var packageInfo = Mock.Of<IFilePackage>
+            (
+                p =>
+                p.Password == "p@ssw0rd" &&
+                p.Path == @"Etl\" &&
+                p.Name == "Sample"
+            );
+
+            var count = 0;
+            LogAction log = (string a, string b, string c, string d, string e, string f, string g, DateTime h, DateTime i, int j, ref byte[] dataBytes) => count++;
+
+            var factory = new PackageServiceFactory();
+            var packageService = factory.Get(packageInfo, null, log);
+            var result = packageService.Run();
+
+            Assert.That(count, Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void Run_PackageWithLogger_PackageEndIsReceived()
+        {
+            var packageInfo = Mock.Of<IFilePackage>
+            (
+                p =>
+                p.Password == "p@ssw0rd" &&
+                p.Path == @"Etl\" &&
+                p.Name == "Sample"
+            );
+
+            var packageEnd = false;
+            LogAction log = (string eventName, string b, string c, string d, string e, string f, string g, DateTime h, DateTime i, int j, ref byte[] dataBytes) => packageEnd = eventName == "PackageEnd";
+
+            var factory = new PackageServiceFactory();
+            var packageService = factory.Get(packageInfo, null, log);
+            var result = packageService.Run();
+
+            Assert.That(packageEnd, Is.True);
         }
 
 

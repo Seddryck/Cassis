@@ -26,23 +26,13 @@ namespace Cassis.Core.Service.SqlAuthentication
             return Run(PackageInfo);
         }
 
-        public PackageResponse Run(ISqlAuthenticationPackage etl)
+        public override Package Load(ref Application integrationServices)
         {
-            var integrationServices = new Application();
-            if (!string.IsNullOrEmpty(etl.Password))
-                integrationServices.PackagePassword = etl.Password;
-
-            var package = integrationServices.LoadFromSqlServer(etl.Path + etl.Name
-                , etl.Server
-                , etl.UserName
-                , etl.Password
+            return integrationServices.LoadFromSqlServer(PackageInfo.Path + PackageInfo.Name
+                , PackageInfo.Server
+                , PackageInfo.UserName
+                , PackageInfo.Password
                 , null);
-
-            if ((etl as IParameters)?.Parameters != null)
-                Parameterize((etl as IParameters).Parameters, ref package);
-
-            var packageResult = package.Execute(null, null, null, null, null);
-            return new PackageResponse(packageResult == DTSExecResult.Success);
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using Cassis.Core;
+using Cassis.Core.Logging;
 using Cassis.Core.Service;
 using Microsoft.SqlServer.Dts.Runtime;
 using System;
@@ -7,10 +8,11 @@ using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using Cassis.Core.Service.File;
 
 namespace Cassis.Core.Service.SqlHosted
 {
-    class SqlHostedService : AbstractPackageService
+    class SqlHostedService : AbstractDtsPackageService
     {
         public new ISqlHostedPackage PackageInfo
         {
@@ -26,20 +28,9 @@ namespace Cassis.Core.Service.SqlHosted
             return Run(PackageInfo);
         }
 
-        protected PackageResponse Run(ISqlHostedPackage etl)
+        public override Package Load(ref Application integrationServices)
         {
-            var integrationServices = new Application();
-            if (!string.IsNullOrEmpty(etl.Password))
-                integrationServices.PackagePassword = etl.Password;
-
-            var package = integrationServices.LoadFromDtsServer(etl.Path + etl.Name, etl.Server, null);
-
-            if ((etl as IParameters)?.Parameters!=null)
-                Parameterize((etl as IParameters).Parameters, ref package);
-
-            var events = new PackageEvents();
-            var packageResult = package.Execute(null, null, events, null, null);
-            return new PackageResponse(packageResult == DTSExecResult.Success, events);
+            return integrationServices.LoadFromDtsServer(PackageInfo.Path + PackageInfo.Name, PackageInfo.Server, null);
         }
     }
 }

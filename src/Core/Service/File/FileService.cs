@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Cassis.Core.Service.File
 {
-    class FileService : AbstractPackageService
+    class FileService : AbstractDtsPackageService
     {
         public new IFilePackage PackageInfo
         {
@@ -25,23 +25,12 @@ namespace Cassis.Core.Service.File
             return Run(PackageInfo);
         }
 
-        protected PackageResponse Run(IFilePackage etl)
+        public override Package Load(ref Application integrationServices)
         {
-            var integrationServices = new Application();
-            if (!string.IsNullOrEmpty(etl.Password))
-                integrationServices.PackagePassword = etl.Password;
-
-            var packagePath = etl.Path
-                + etl.Name
-                + (etl.Name.EndsWith(".dtsx") ? "" : ".dtsx");
-            var package = integrationServices.LoadPackage(packagePath, null);
-
-            if ((etl as IParameters)?.Parameters != null)
-                Parameterize((etl as IParameters).Parameters, ref package);
-
-            var events = new PackageEvents();
-            var packageResult = package.Execute(null, null, events, null, null);
-            return new PackageResponse(packageResult == DTSExecResult.Success, events);
+            var packagePath = PackageInfo.Path
+               + PackageInfo.Name
+               + (PackageInfo.Name.EndsWith(".dtsx") ? "" : ".dtsx");
+            return integrationServices.LoadPackage(packagePath, null);
         }
     }
 }
