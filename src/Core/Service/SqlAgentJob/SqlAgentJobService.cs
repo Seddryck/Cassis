@@ -8,16 +8,16 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace Cassis.Core.Service.Catalog
+namespace Cassis.Core.Service.SqlAgentJob
 {
     class SqlAgentService : AbstractPackageService
     {
-        public new ISqlAgentPackage PackageInfo
+        public new ISqlAgentJobPackage PackageInfo
         {
-            get { return base.PackageInfo as ISqlAgentPackage; }
+            get { return base.PackageInfo as ISqlAgentJobPackage; }
         }
 
-        public SqlAgentService(ISqlAgentPackage packageInfo)
+        public SqlAgentService(ISqlAgentJobPackage packageInfo)
             : base(packageInfo)
         { }
 
@@ -26,7 +26,7 @@ namespace Cassis.Core.Service.Catalog
             return Run(PackageInfo);
         }
 
-        protected PackageResponse Run(ISqlAgentPackage etl)
+        protected PackageResponse Run(ISqlAgentJobPackage etl)
         {
             var connection = new SqlConnection(string.Format(@"Data Source={0};Initial Catalog=msdb;Integrated Security=SSPI;", etl.Server));
             var command = new SqlCommand("sp_start_job", connection);

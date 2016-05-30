@@ -104,8 +104,8 @@
     <Compile Include="Service\File\IFilePackage.cs" />
     <Compile Include="Service\File\FileService.cs" />
     <Compile Include="Service\PackageInfoExtensions.cs" />
-    <Compile Include="Service\SqlAgent\ISqlAgentPackage.cs" />
-    <Compile Include="Service\SqlAgent\SqlAgentService.cs" />
+    <Compile Include="Service\SqlAgentJob\ISqlAgentJobPackage.cs" />
+    <Compile Include="Service\SqlAgentJob\SqlAgentJobService.cs" />
     <Compile Include="Service\SqlAuthentication\ISqlAuthenticationPackage.cs" />
     <Compile Include="Service\SqlAuthentication\SqlAuthenticationService.cs" />
     <Compile Include="Service\SqlHosted\ISqlHostedPackage.cs" />
