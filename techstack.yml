@@ -1,7 +1,8 @@
 repo_name: Seddryck/Cassis
 report_id: 3d7849a35b705080c75d127b75830e1f
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-12T20:25:36+00:00'
+timestamp: '2024-01-05T08:48:11+00:00'
 requested_by: Seddryck
 provider: github
 branch: master
@@ -17,8 +18,8 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/6755/2c45151a4a11d3a3c8e71bb34dd069d6_400x400.png
-  detection_source_url: src/Core/Cassis.Core.csproj
-  detection_source: src/Wcf/Service/Cassis.Host.Service.csproj
+  detection_source_url: https://github.com/Seddryck/Cassis/blob/master/src/Core/Cassis.Core.csproj
+  detection_source: src/Core/Cassis.Core.csproj
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2014-05-15 15:47:53.000000000 Z
 - name: C#
@@ -30,6 +31,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png
+  detection_source_url: https://github.com/Seddryck/Cassis
   detection_source: Repo Metadata
 - name: ".NET"
   description: A free, cross-platform, open source developer platform for building
@@ -41,6 +43,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1014/IoPy1dce_400x400.png
+  detection_source_url: https://github.com/Seddryck/Cassis/blob/master/src/Testing/Server/packages.config
   detection_source: src/Testing/Server/packages.config
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2014-05-17 00:09:27.000000000 Z
@@ -52,6 +55,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/Seddryck/Cassis
   detection_source: Repo Metadata
 - name: Moq
   description: The most popular and friendly mocking framework for .NET
@@ -61,6 +65,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/1628/1434934.png
+  detection_source_url: https://github.com/Seddryck/Cassis/blob/master/src/Testing/Server/packages.config
   detection_source: src/Testing/Server/packages.config
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2014-05-17 00:09:27.000000000 Z
@@ -72,7 +77,8 @@ tools:
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/2371/jZ6MYx5Y_400x400.png
-  detection_source: src/Testing/Server/packages.config
+  detection_source_url: https://github.com/Seddryck/Cassis/blob/master/src/Testing/Client/packages.config
+  detection_source: src/Testing/Client/packages.config
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2014-05-17 00:09:27.000000000 Z
 - name: NuGet
@@ -83,6 +89,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/service/2637/6I3oEOP4_400x400.jpg
+  detection_source_url: https://github.com/Seddryck/Cassis/blob/master/src/Testing/Server/packages.config
   detection_source: src/Testing/Server/packages.config
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2014-05-17 00:09:27.000000000 Z
@@ -95,6 +102,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Integrated Development Environment
   image_url: https://img.stackshare.io/service/1451/SR2hUhQN.png
+  detection_source_url: https://github.com/Seddryck/Cassis/blob/master/src/Cassis.sln
   detection_source: src/Cassis.sln
   last_updated_by: Cédric L. Charlier
   last_updated_on: 2016-01-18 23:25:12.000000000 Z
